@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Rick And Morty Universe</string>
+    <string name="title_episodes">Episodes</string>
+    <string name="title_characters">Characters</string>
+    <string name="title_locations">Locations</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="networkError">\"Network problem occurred.\nPlease try again later.\"</string>
+</resources>
