@@ -47,7 +47,7 @@ class LocationFragment : Fragment() {
         val r = Random()
         var randomNumber: Int
         for (i in 0..4) {
-            randomNumber = r.nextInt(NBLOCATIONS - 1 + 1) + 1
+            randomNumber = r.nextInt(NBLOCATIONS) + 1
             if (!ids.contains(randomNumber)) {
                 ids.add(randomNumber)
                 AsyncDownloadLocation().execute(randomNumber, locations, locationAdapter)
