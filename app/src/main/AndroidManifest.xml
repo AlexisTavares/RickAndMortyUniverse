@@ -3,41 +3,32 @@
     package="alexis.tvrs.rickandmortyuniverse">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name = "android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_portal_gun"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_portal_gun_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppSeriesTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".wiki.activities.MainActivity"
             android:screenOrientation="portrait"
             android:label="@string/app_name">
         </activity>
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".wiki.activities.SplashScreenActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignInActivity"
+        <activity android:name=".wiki.activities.SignInActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.characters.CharacterFullActivity"
+            android:name=".wiki.activities.CharacterFullActivity"
             android:screenOrientation="portrait" />
-
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
-        <activity android:name="com.facebook.FacebookActivity" android:configChanges= "keyboard|keyboardHidden|screenLayout|screenSize|orientation" android:label="@string/app_name" />
-        <activity android:name="com.facebook.CustomTabActivity" android:exported="true">
-            <intent-filter> <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="@string/fb_login_protocol_scheme" />
-            </intent-filter>
-        </activity>
 
     </application>
 
