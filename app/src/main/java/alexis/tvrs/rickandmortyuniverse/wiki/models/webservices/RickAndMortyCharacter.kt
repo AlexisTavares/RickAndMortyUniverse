@@ -1,4 +1,4 @@
-package alexis.tvrs.rickandmortyuniverse.wiki.models
+package alexis.tvrs.rickandmortyuniverse.wiki.models.webservices
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

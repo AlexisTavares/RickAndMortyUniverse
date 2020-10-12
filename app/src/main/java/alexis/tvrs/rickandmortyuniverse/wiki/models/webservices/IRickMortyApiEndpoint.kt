@@ -1,8 +1,4 @@
-package alexis.tvrs.rickandmortyuniverse.wiki.api
-
-import alexis.tvrs.rickandmortyuniverse.wiki.models.Episode
-import alexis.tvrs.rickandmortyuniverse.wiki.models.Location
-import alexis.tvrs.rickandmortyuniverse.wiki.models.RickAndMortyCharacter
+package alexis.tvrs.rickandmortyuniverse.wiki.models.webservices
 
 import retrofit2.Call
 import retrofit2.http.GET

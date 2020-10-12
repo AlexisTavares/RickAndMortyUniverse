@@ -5,7 +5,7 @@
     android:id="@+id/fragment_episodes_pullToResfresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".wiki.fragments.EpisodeFragment">
+    tools:context=".wiki.ui.fragments.EpisodeFragment">
 
     <ListView
         android:id="@+id/fragment_episodes_listView"

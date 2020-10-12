@@ -1,9 +1,7 @@
-package alexis.tvrs.rickandmortyuniverse.wiki.activities
+package alexis.tvrs.rickandmortyuniverse.wiki.ui.activities
 
 import alexis.tvrs.rickandmortyuniverse.R
 import android.os.Bundle
-import android.telephony.SubscriptionPlan
-import android.view.DragEvent
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
@@ -11,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

@@ -12,22 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppSeriesTheme">
         <activity
-            android:name=".wiki.activities.MainActivity"
+            android:name="alexis.tvrs.rickandmortyuniverse.wiki.ui.activities.MainActivity"
             android:screenOrientation="portrait"
             android:label="@string/app_name">
         </activity>
         <activity
-            android:name=".wiki.activities.SplashScreenActivity"
+            android:name="alexis.tvrs.rickandmortyuniverse.wiki.ui.activities.SplashScreenActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".wiki.activities.SignInActivity"
+        <activity android:name="alexis.tvrs.rickandmortyuniverse.wiki.ui.activities.SignInActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".wiki.activities.CharacterFullActivity"
+            android:name="alexis.tvrs.rickandmortyuniverse.wiki.ui.activities.CharacterFullActivity"
             android:screenOrientation="portrait" />
 
     </application>

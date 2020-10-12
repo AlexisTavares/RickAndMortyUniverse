@@ -1,7 +1,7 @@
-package alexis.tvrs.rickandmortyuniverse.wiki.adapters
+package alexis.tvrs.rickandmortyuniverse.wiki.ui.adapters
 
 import alexis.tvrs.rickandmortyuniverse.R
-import alexis.tvrs.rickandmortyuniverse.wiki.models.Location
+import alexis.tvrs.rickandmortyuniverse.wiki.models.webservices.Location
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View

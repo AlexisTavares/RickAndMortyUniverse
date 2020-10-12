@@ -7,24 +7,24 @@
 
     <fragment
         android:id="@+id/navigation_episodes"
-        android:name="alexis.tvrs.rickandmortyuniverse.wiki.fragments.EpisodeFragment"
+        android:name="alexis.tvrs.rickandmortyuniverse.wiki.ui.fragments.EpisodeFragment"
         android:label="@string/title_episodes"
         tools:layout="@layout/fragment_episodes" />
 
     <fragment
         android:id="@+id/navigation_characters"
-        android:name="alexis.tvrs.rickandmortyuniverse.wiki.fragments.CharacterFragment"
+        android:name="alexis.tvrs.rickandmortyuniverse.wiki.ui.fragments.CharacterFragment"
         android:label="@string/title_characters"
         tools:layout="@layout/fragment_characters" />
 
     <fragment
         android:id="@+id/navigation_locations"
-        android:name="alexis.tvrs.rickandmortyuniverse.wiki.fragments.LocationFragment"
+        android:name="alexis.tvrs.rickandmortyuniverse.wiki.ui.fragments.LocationFragment"
         android:label="@string/title_locations"
         tools:layout="@layout/fragment_locations" />
     <fragment
         android:id="@+id/navigation_favorites"
-        android:name="alexis.tvrs.rickandmortyuniverse.wiki.fragments.FavoriteFragment"
+        android:name="alexis.tvrs.rickandmortyuniverse.wiki.ui.fragments.FavoriteFragment"
         android:label="@string/title_favorites"
         tools:layout="@layout/fragment_favorites" />
 </navigation>

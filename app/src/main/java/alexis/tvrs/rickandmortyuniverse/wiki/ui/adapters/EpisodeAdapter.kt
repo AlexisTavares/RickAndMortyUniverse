@@ -1,7 +1,7 @@
-package alexis.tvrs.rickandmortyuniverse.wiki.adapters
+package alexis.tvrs.rickandmortyuniverse.wiki.ui.adapters
 
 import alexis.tvrs.rickandmortyuniverse.R
-import alexis.tvrs.rickandmortyuniverse.wiki.models.Episode
+import alexis.tvrs.rickandmortyuniverse.wiki.models.webservices.Episode
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View

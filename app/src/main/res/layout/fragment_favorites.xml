@@ -5,7 +5,7 @@
     android:id="@+id/fragment_characters_pullToRefresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".wiki.fragments.CharacterFragment">
+    tools:context=".wiki.ui.fragments.CharacterFragment">
 
     <GridView
         android:id="@+id/fragment_favorites_simpleGridView"

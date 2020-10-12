@@ -1,7 +1,7 @@
-package alexis.tvrs.rickandmortyuniverse.wiki.activities
+package alexis.tvrs.rickandmortyuniverse.wiki.ui.activities
 
 import alexis.tvrs.rickandmortyuniverse.R
-import alexis.tvrs.rickandmortyuniverse.wiki.models.RickAndMortyCharacter
+import alexis.tvrs.rickandmortyuniverse.wiki.models.webservices.RickAndMortyCharacter
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity

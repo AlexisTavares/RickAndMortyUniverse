@@ -1,12 +1,12 @@
-package alexis.tvrs.rickandmortyuniverse.wiki.activities
+package alexis.tvrs.rickandmortyuniverse.wiki.ui.activities
 
-import alexis.tvrs.rickandmortyuniverse.wiki.api.IRickMortyApiEndpoint
+import alexis.tvrs.rickandmortyuniverse.wiki.models.webservices.IRickMortyApiEndpoint
 import alexis.tvrs.rickandmortyuniverse.R
 import alexis.tvrs.rickandmortyuniverse.sharedpreferences.SharedPreferencesFavorites
-import alexis.tvrs.rickandmortyuniverse.wiki.api.RickAndMortyApiService
-import alexis.tvrs.rickandmortyuniverse.wiki.models.RickAndMortyCharacter
-import alexis.tvrs.rickandmortyuniverse.wiki.models.Episode
-import alexis.tvrs.rickandmortyuniverse.wiki.models.Location
+import alexis.tvrs.rickandmortyuniverse.wiki.models.webservices.RickAndMortyApiService
+import alexis.tvrs.rickandmortyuniverse.wiki.models.webservices.RickAndMortyCharacter
+import alexis.tvrs.rickandmortyuniverse.wiki.models.webservices.Episode
+import alexis.tvrs.rickandmortyuniverse.wiki.models.webservices.Location
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle

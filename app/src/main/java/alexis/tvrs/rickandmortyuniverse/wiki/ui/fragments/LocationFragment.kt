@@ -1,8 +1,8 @@
-package alexis.tvrs.rickandmortyuniverse.wiki.fragments
+package alexis.tvrs.rickandmortyuniverse.wiki.ui.fragments
 
 import alexis.tvrs.rickandmortyuniverse.R
-import alexis.tvrs.rickandmortyuniverse.wiki.activities.SplashScreenActivity
-import alexis.tvrs.rickandmortyuniverse.wiki.adapters.LocationAdapter
+import alexis.tvrs.rickandmortyuniverse.wiki.ui.activities.SplashScreenActivity
+import alexis.tvrs.rickandmortyuniverse.wiki.ui.adapters.LocationAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

@@ -1,4 +1,4 @@
-package alexis.tvrs.rickandmortyuniverse.wiki.activities
+package alexis.tvrs.rickandmortyuniverse.wiki.ui.activities
 
 import alexis.tvrs.rickandmortyuniverse.R
 import android.content.Intent
