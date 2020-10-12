@@ -1,6 +1,6 @@
-package alexis.tvrs.rickandmortyuniverse
+package alexis.tvrs.rickandmortyuniverse.sharedpreferences
 
-import alexis.tvrs.rickandmortyuniverse.ui.characters.RickAndMortyCharacter
+import alexis.tvrs.rickandmortyuniverse.wiki.models.RickAndMortyCharacter
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson

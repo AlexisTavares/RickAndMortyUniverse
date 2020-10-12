@@ -22,6 +22,7 @@ class SplashScreenActivity : Activity() {
         setContentView(R.layout.activity_splash)
         val favorites = SharedPreferencesFavorites.getFavorites(this)
         if (favorites!= null)
+
             FAVORITES.addAll(favorites)
         var rickAndMortyCharacterCall: Call<RickAndMortyCharacter>
         for (character_id in 1 .. NBCHARACTERS){

@@ -19,12 +19,8 @@ import androidx.fragment.app.Fragment
 
 class CharacterFragment : Fragment() {
     private var characterAdapter: CharacterAdapter? = null
-    private var sharedPreferencesFavorites: SharedPreferencesFavorites? = null
-    private var sharedPreferencesCharacters: SharedPreferencesCharacters? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_characters, container, false)
-        sharedPreferencesFavorites = SharedPreferencesFavorites()
-        sharedPreferencesCharacters = SharedPreferencesCharacters()
         characterAdapter =  CharacterAdapter(root.context, SplashScreenActivity.CHARACTERS)
 
         val gridView = root.findViewById<GridView>(R.id.fragment_characters_simpleGridView)
@@ -37,8 +33,8 @@ class CharacterFragment : Fragment() {
         }
 
         gridView.onItemLongClickListener = OnItemLongClickListener { parent, view, position, id ->
-//            sharedPreferencesFavorites!!.addFavorite(root.context, SplashScreenActivity.CHARACTERS[position])
             SplashScreenActivity.FAVORITES.add(SplashScreenActivity.CHARACTERS[position])
+            SharedPreferencesFavorites.saveFavorites(root.context, SplashScreenActivity.FAVORITES)
             Toast.makeText(activity, "Added to favorites", Toast.LENGTH_LONG).show()
             true
         }

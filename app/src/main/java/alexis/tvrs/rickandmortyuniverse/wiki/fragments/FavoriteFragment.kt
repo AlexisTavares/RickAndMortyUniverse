@@ -19,7 +19,6 @@ import androidx.fragment.app.Fragment
 class FavoriteFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_favorites, container, false)
-//        val sharedPreferencesFavorites = SharedPreferencesFavorites()
         val simpleGrid = root.findViewById<GridView>(R.id.fragment_favorites_simpleGridView)
         val characterGridAdapter = CharacterAdapter(requireContext(), SplashScreenActivity.FAVORITES)
         simpleGrid.adapter = characterGridAdapter
@@ -31,7 +30,7 @@ class FavoriteFragment : Fragment() {
         }
         simpleGrid.onItemLongClickListener = OnItemLongClickListener { parent, view, position, id ->
             SplashScreenActivity.FAVORITES.remove(SplashScreenActivity.FAVORITES[position])
-//            sharedPreferencesFavorites.saveFavorites(requireActivity(), SplashScreenActivity.FAVORITES)
+            SharedPreferencesFavorites.saveFavorites(requireActivity(), SplashScreenActivity.FAVORITES)
             characterGridAdapter.notifyDataSetChanged()
             Toast.makeText(activity, "Removed from favorites", Toast.LENGTH_SHORT).show()
             true
