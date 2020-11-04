@@ -1,7 +1,7 @@
 package alexis.tvrs.rickandmortyuniverse.wiki.ui.activities
 
 import alexis.tvrs.rickandmortyuniverse.R
-import alexis.tvrs.rickandmortyuniverse.wiki.models.webservices.RickAndMortyCharacter
+import alexis.tvrs.rickandmortyuniverse.wiki.data.models.RickAndMortyCharacter
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -19,21 +19,17 @@ class CharacterFullActivity : AppCompatActivity() {
 
         val nameText = "Name: " + character.name
         characterLayout_name.text = nameText
-
         val statusText = "Status: " + character.status
         characterLayout_status.text = statusText
-
         val genderText = "Gender: " + character.gender
         characterLayout_genre.text = genderText
-
         val speciesText = "Species: " + character.species
         characterLayout_species.text = speciesText
-
-        val originText = "Origin: " + (character.origin?.name ?:"Unknown")
+        val originText = "Origin: " + (character.origin.name ?:"Unknown")
         characterLayout_origin.text = originText
         characterLayout_origin.setOnClickListener { Toast.makeText(this, character.origin.toString(), Toast.LENGTH_LONG).show() }
 
-        val lastLocationText = "Last Location: " + (character.location?.name ?:"Unknown")
+        val lastLocationText = "Last Location: " + (character.location.name ?:"Unknown")
         characterLayout_lastLocation.text = lastLocationText
         characterLayout_origin.setOnClickListener { Toast.makeText(this, character.location.toString(), Toast.LENGTH_LONG).show() }
 

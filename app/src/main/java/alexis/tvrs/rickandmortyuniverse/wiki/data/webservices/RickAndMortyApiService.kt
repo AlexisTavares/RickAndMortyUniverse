@@ -1,10 +1,9 @@
-package alexis.tvrs.rickandmortyuniverse.wiki.models.webservices
+package alexis.tvrs.rickandmortyuniverse.wiki.data.webservices
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RickAndMortyApiService {
-
     companion object {
         val BASE_URL = "https://rickandmortyapi.com/api/"
         val retrofit = Retrofit.Builder()

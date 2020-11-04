@@ -1,40 +1,43 @@
 package alexis.tvrs.rickandmortyuniverse.wiki.ui.fragments
 
 import alexis.tvrs.rickandmortyuniverse.R
-import alexis.tvrs.rickandmortyuniverse.sharedpreferences.SharedPreferencesFavorites
-import alexis.tvrs.rickandmortyuniverse.wiki.ui.activities.SplashScreenActivity
-import alexis.tvrs.rickandmortyuniverse.wiki.ui.adapters.CharacterAdapter
-import alexis.tvrs.rickandmortyuniverse.wiki.ui.activities.CharacterFullActivity
-import android.content.Intent
+import alexis.tvrs.rickandmortyuniverse.wiki.ui.adapters.FavoriteAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
-import android.widget.AdapterView.OnItemLongClickListener
-import android.widget.GridView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_characters.*
 
 class FavoriteFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root = inflater.inflate(R.layout.fragment_favorites, container, false)
-        val simpleGrid = root.findViewById<GridView>(R.id.fragment_favorites_simpleGridView)
-        val characterGridAdapter = CharacterAdapter(requireContext(), SplashScreenActivity.FAVORITES)
-        simpleGrid.adapter = characterGridAdapter
-        characterGridAdapter.notifyDataSetChanged()
-        simpleGrid.onItemClickListener = OnItemClickListener { parent, view, position, id ->
-            val intent = Intent(activity, CharacterFullActivity::class.java)
-            intent.putExtra("CHARACTER", SplashScreenActivity.FAVORITES[position])
-            startActivity(intent)
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_characters, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        character_recyclerview.adapter = FavoriteAdapter { _, c ->
+            parentFragmentManager.beginTransaction()
+                    .addToBackStack("CharacterDetailsFragment")
+                    .setCustomAnimations(
+                            R.anim.fragment_open_enter, R.anim.fragment_close_exit,
+                            R.anim.fragment_open_enter, R.anim.fragment_close_exit
+                    )
+                    .replace(R.id.nav_host_fragment, CharacterDetailsFragment.newInstance(c))
+                    .commit()
         }
-        simpleGrid.onItemLongClickListener = OnItemLongClickListener { parent, view, position, id ->
-            SplashScreenActivity.FAVORITES.remove(SplashScreenActivity.FAVORITES[position])
-            SharedPreferencesFavorites.saveFavorites(requireActivity(), SplashScreenActivity.FAVORITES)
-            characterGridAdapter.notifyDataSetChanged()
-            Toast.makeText(activity, "Removed from favorites", Toast.LENGTH_SHORT).show()
-            true
-        }
-        return root
+
+//        simpleGrid.onItemLongClickListener = OnItemLongClickListener { parent, view, position, id ->
+//            SplashScreenActivity.FAVORITES.remove(SplashScreenActivity.FAVORITES[position])
+//            SharedPreferencesFavorites.saveFavorites(requireActivity(), SplashScreenActivity.FAVORITES)
+//            characterGridAdapter.notifyDataSetChanged()
+//            Toast.makeText(activity, "Removed from favorites", Toast.LENGTH_SHORT).show()
+//            true
+//        }
     }
 }

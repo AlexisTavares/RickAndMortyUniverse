@@ -1,42 +1,46 @@
 package alexis.tvrs.rickandmortyuniverse.wiki.ui.fragments
 
 import alexis.tvrs.rickandmortyuniverse.R
-import alexis.tvrs.rickandmortyuniverse.sharedpreferences.SharedPreferencesFavorites
-import alexis.tvrs.rickandmortyuniverse.wiki.ui.activities.SplashScreenActivity
 import alexis.tvrs.rickandmortyuniverse.wiki.ui.adapters.CharacterAdapter
-import alexis.tvrs.rickandmortyuniverse.wiki.ui.activities.CharacterFullActivity
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
-import android.widget.AdapterView.OnItemLongClickListener
-import android.widget.GridView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_characters.*
 
 class CharacterFragment : Fragment() {
-    private var characterAdapter: CharacterAdapter? = null
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root = inflater.inflate(R.layout.fragment_characters, container, false)
-        characterAdapter =  CharacterAdapter(root.context, SplashScreenActivity.CHARACTERS)
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_characters, container, false)
+    }
 
-        val gridView = root.findViewById<GridView>(R.id.fragment_characters_simpleGridView)
-        gridView.adapter = characterAdapter
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        gridView.onItemClickListener = OnItemClickListener { parent, view, position, id ->
-            val intent = Intent(activity, CharacterFullActivity::class.java)
-            intent.putExtra("CHARACTER", SplashScreenActivity.CHARACTERS[position])
-            startActivity(intent)
+        character_recyclerview.adapter = CharacterAdapter { _, c ->
+            parentFragmentManager.beginTransaction()
+                    .addToBackStack("CharacterDetailsFragment")
+                    .setCustomAnimations(
+                            R.anim.fragment_open_enter, R.anim.fragment_close_exit,
+                            R.anim.fragment_open_enter, R.anim.fragment_close_exit
+                    )
+                    .replace(R.id.nav_host_fragment, CharacterDetailsFragment.newInstance(c))
+                    .commit()
         }
 
-        gridView.onItemLongClickListener = OnItemLongClickListener { parent, view, position, id ->
-            SplashScreenActivity.FAVORITES.add(SplashScreenActivity.CHARACTERS[position])
-            SharedPreferencesFavorites.saveFavorites(root.context, SplashScreenActivity.FAVORITES)
-            Toast.makeText(activity, "Added to favorites", Toast.LENGTH_LONG).show()
-            true
-        }
-        return root
+//        gridView.onItemLongClickListener = OnItemLongClickListener { parent, view, position, id ->
+//            if(SplashScreenActivity.FAVORITES.contains(SplashScreenActivity.CHARACTERS[position])){
+//                Toast.makeText(activity,"Character already saved as favorite", Toast.LENGTH_SHORT).show()
+//            }else {
+//                SplashScreenActivity.FAVORITES.add(SplashScreenActivity.CHARACTERS[position])
+//                SharedPreferencesFavorites.saveFavorites(view.context, SplashScreenActivity.FAVORITES)
+//                Toast.makeText(activity, "Added to favorites", Toast.LENGTH_SHORT).show()
+//            }
+//            true
+//        }
     }
 }

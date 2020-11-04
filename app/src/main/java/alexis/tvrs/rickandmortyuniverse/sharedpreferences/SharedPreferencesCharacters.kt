@@ -1,13 +1,12 @@
 package alexis.tvrs.rickandmortyuniverse.sharedpreferences
 
-import alexis.tvrs.rickandmortyuniverse.wiki.models.webservices.RickAndMortyCharacter
+import alexis.tvrs.rickandmortyuniverse.wiki.data.models.RickAndMortyCharacter
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import java.util.*
 
 class SharedPreferencesCharacters {
-    // This four methods are used for maintaining characters.
     fun savecharacters(context: Context, rickAndMortyCharacters: List<RickAndMortyCharacter?>?) {
         val settings: SharedPreferences
         val editor: SharedPreferences.Editor

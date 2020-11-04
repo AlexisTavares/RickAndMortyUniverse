@@ -1,45 +1,44 @@
 package alexis.tvrs.rickandmortyuniverse.wiki.ui.adapters
 
 import alexis.tvrs.rickandmortyuniverse.R
-import alexis.tvrs.rickandmortyuniverse.wiki.models.webservices.Location
-import android.content.Context
+import alexis.tvrs.rickandmortyuniverse.wiki.data.models.RickAndMortyLocation
+import alexis.tvrs.rickandmortyuniverse.wiki.ui.activities.SplashScreenActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.LinearLayout
-import kotlinx.android.synthetic.main.adapter_location.view.*
-import java.util.*
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.view_holder_location.view.*
 
-class LocationAdapter internal constructor(private val context: Context, private val list: ArrayList<Location>) : BaseAdapter() {
-    override fun getCount(): Int {
-        return list.size
+class LocationAdapter : RecyclerView.Adapter<LocationAdapter.LocationItemViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationItemViewHolder {
+        return LocationItemViewHolder.newInstance(parent)
     }
 
-    override fun getItem(position: Int): Any {
-        return list[position]
+    override fun onBindViewHolder(holder: LocationItemViewHolder, position: Int) {
+        holder.bind(SplashScreenActivity.LOCATIONS[position])
     }
 
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
+    override fun getItemCount(): Int {
+        return SplashScreenActivity.LOCATIONS.size
     }
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val layoutItem: LinearLayout
-        val mInflater = LayoutInflater.from(context)
-        layoutItem = if (convertView == null) {
-            mInflater.inflate(R.layout.adapter_location, parent, false) as LinearLayout
-        } else {
-            convertView as LinearLayout
+    class LocationItemViewHolder(
+            itemView: View
+    ): RecyclerView.ViewHolder(itemView){
+        fun bind(location: RickAndMortyLocation) {
+            itemView.location_layout_name.text = location.name
+            itemView.location_layout_dimension.text = location.dimension
+            itemView.location_layout_type.text = location.type
         }
-        val nameText = "Name: " + list[position].name
-        layoutItem.locationLayout_name.text = nameText
 
-        val typeText = "Type: " + list[position].type
-        layoutItem.locationLayout_type.text = typeText
-
-        val dimensionText = "Dimension: " + list[position].dimension
-        layoutItem.locationLayout_dimension.text = dimensionText
-        return layoutItem
+        companion object{
+            fun newInstance(parent: ViewGroup) = LocationItemViewHolder(
+                    LayoutInflater.from(parent.context).inflate(
+                            R.layout.view_holder_location,
+                            parent,
+                            false
+                    )
+            )
+        }
     }
 }

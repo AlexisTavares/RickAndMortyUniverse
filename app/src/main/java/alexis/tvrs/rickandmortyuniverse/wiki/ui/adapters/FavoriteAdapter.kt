@@ -11,17 +11,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.view_holder_character.view.*
 
-class CharacterAdapter(val onClick: (View, RickAndMortyCharacter) -> Unit): RecyclerView.Adapter<CharacterAdapter.CharacterItemViewHolder>(){
+class FavoriteAdapter(val onClick: (View, RickAndMortyCharacter) -> Unit): RecyclerView.Adapter<FavoriteAdapter.CharacterItemViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterItemViewHolder {
         return CharacterItemViewHolder.newInstance(parent)
     }
 
     override fun onBindViewHolder(holder: CharacterItemViewHolder, position: Int) {
-        holder.bind(SplashScreenActivity.CHARACTERS[position],onClick)
+        holder.bind(SplashScreenActivity.FAVORITES[position],onClick)
     }
 
     override fun getItemCount(): Int {
-        return SplashScreenActivity.CHARACTERS.size
+        return SplashScreenActivity.FAVORITES.size
     }
 
     class CharacterItemViewHolder(
@@ -34,7 +34,6 @@ class CharacterAdapter(val onClick: (View, RickAndMortyCharacter) -> Unit): Recy
                     .centerCrop()
                     .into(itemView.character_grid_icon)
             itemView.character_grid_name.text = character.name
-
             itemView.setOnClickListener{onClick(it, character)}
         }
 

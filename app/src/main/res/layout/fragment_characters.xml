@@ -7,13 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".wiki.ui.fragments.CharacterFragment">
 
-    <GridView
-        android:id="@+id/fragment_characters_simpleGridView"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:footerDividersEnabled="false"
-        android:numColumns="2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/character_recyclerview"
+        app:spanCount="2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/view_holder_character"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
