@@ -1,6 +1,7 @@
 package alexis.tvrs.rickandmortyuniverse.wiki.ui.adapters
 
 import alexis.tvrs.rickandmortyuniverse.R
+import alexis.tvrs.rickandmortyuniverse.wiki.data.models.RickAndMortyCharacter
 import alexis.tvrs.rickandmortyuniverse.wiki.data.models.RickAndMortyLocation
 import alexis.tvrs.rickandmortyuniverse.wiki.ui.activities.SplashScreenActivity
 import android.view.LayoutInflater
@@ -10,16 +11,25 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.view_holder_location.view.*
 
 class LocationAdapter : RecyclerView.Adapter<LocationAdapter.LocationItemViewHolder>() {
+    private var mLocationList = emptyList<RickAndMortyLocation>()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationItemViewHolder {
         return LocationItemViewHolder.newInstance(parent)
     }
 
     override fun onBindViewHolder(holder: LocationItemViewHolder, position: Int) {
-        holder.bind(SplashScreenActivity.LOCATIONS[position])
+        holder.bind(mLocationList[position])
     }
 
     override fun getItemCount(): Int {
-        return SplashScreenActivity.LOCATIONS.size
+        return mLocationList.size
+    }
+
+    fun setData(listLocation: List<RickAndMortyLocation>?) {
+        if(listLocation != null) {
+            this.mLocationList = listLocation
+            notifyDataSetChanged()
+        }
     }
 
     class LocationItemViewHolder(

@@ -4,7 +4,6 @@ import alexis.tvrs.rickandmortyuniverse.R
 import alexis.tvrs.rickandmortyuniverse.sharedpreferences.SharedPreferencesFavorites
 import alexis.tvrs.rickandmortyuniverse.utils.ScreenUtils
 import alexis.tvrs.rickandmortyuniverse.wiki.data.models.RickAndMortyCharacter
-import alexis.tvrs.rickandmortyuniverse.wiki.data.webservices.NetworkManager
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -28,10 +27,7 @@ class SplashScreenActivity : Activity() {
 
     companion object {
         var CARD_SIZE = 50
-        val CHARACTERS = NetworkManager.getCharacters()
         var FAVORITES = ArrayList<RickAndMortyCharacter>()
-        val LOCATIONS = NetworkManager.getLocations()
-        val EPISODES = NetworkManager.getEpisodes()
     }
 
 

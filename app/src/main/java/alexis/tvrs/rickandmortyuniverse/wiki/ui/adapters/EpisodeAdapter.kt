@@ -1,6 +1,7 @@
 package alexis.tvrs.rickandmortyuniverse.wiki.ui.adapters
 
 import alexis.tvrs.rickandmortyuniverse.R
+import alexis.tvrs.rickandmortyuniverse.wiki.data.models.RickAndMortyCharacter
 import alexis.tvrs.rickandmortyuniverse.wiki.data.models.RickAndMortyEpisode
 import alexis.tvrs.rickandmortyuniverse.wiki.ui.activities.SplashScreenActivity
 import android.view.LayoutInflater
@@ -10,16 +11,25 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.view_holder_episode.view.*
 
 class EpisodeAdapter : RecyclerView.Adapter<EpisodeAdapter.EpisodeItemViewHolder>() {
+    private var mEpisodeList = emptyList<RickAndMortyEpisode>()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EpisodeItemViewHolder {
         return EpisodeItemViewHolder.newInstance(parent)
     }
 
     override fun onBindViewHolder(holder: EpisodeItemViewHolder, position: Int) {
-        holder.bind(SplashScreenActivity.EPISODES[position])
+        holder.bind(mEpisodeList[position])
     }
 
     override fun getItemCount(): Int {
-        return SplashScreenActivity.EPISODES.size
+        return mEpisodeList.size
+    }
+
+    fun setData(listEpisodes: List<RickAndMortyEpisode>?) {
+        if(listEpisodes != null) {
+            this.mEpisodeList = listEpisodes
+            notifyDataSetChanged()
+        }
     }
 
     class EpisodeItemViewHolder(

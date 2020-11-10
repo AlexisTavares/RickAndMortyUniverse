@@ -1,8 +1,10 @@
 package alexis.tvrs.rickandmortyuniverse.wiki.ui.fragments
 
 import alexis.tvrs.rickandmortyuniverse.R
+import alexis.tvrs.rickandmortyuniverse.utils.ScreenUtils
 import alexis.tvrs.rickandmortyuniverse.wiki.data.models.RickAndMortyCharacter
 import alexis.tvrs.rickandmortyuniverse.wiki.ui.activities.MainActivity
+import alexis.tvrs.rickandmortyuniverse.wiki.ui.activities.SplashScreenActivity
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -32,10 +34,12 @@ class CharacterDetailsFragment: Fragment() {
         return inflater.inflate(R.layout.fragment_character_details, container, false)
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Glide.with(view)
                 .load(characterToDisplay.image)
+                .override( ScreenUtils.getScreenWidth(view.context))
                 .centerCrop()
                 .into(view.characterLayout_image)
         val nameText = "Name: " + characterToDisplay.name

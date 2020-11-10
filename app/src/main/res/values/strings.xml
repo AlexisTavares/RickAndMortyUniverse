@@ -4,9 +4,5 @@
     <string name="title_characters">Characters</string>
     <string name="title_locations">Locations</string>
     <string name="title_favorites">Favorites</string>
-    <string name="networkError">\"Network problem occurred.\nPlease try again later.\"</string>
-    <string name="facebook_app_id">393982828667263</string>
-    <string name="fb_login_protocol_scheme">fb393982828667263</string>
-    <string name="profile">Profile</string>
 
 </resources>
