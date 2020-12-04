@@ -1,8 +1,7 @@
 package alexis.tvrs.rickandmortyuniverse.wiki.ui.fragments
 
 import alexis.tvrs.rickandmortyuniverse.R
-import alexis.tvrs.rickandmortyuniverse.wiki.data.repositories.RickAndMortyRepository
-import alexis.tvrs.rickandmortyuniverse.wiki.ui.adapters.CharacterAdapter
+import alexis.tvrs.rickandmortyuniverse.wiki.data.webservices.RickAndMortyDatasource
 import alexis.tvrs.rickandmortyuniverse.wiki.ui.adapters.EpisodeAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -26,10 +25,10 @@ class EpisodeFragment : Fragment() {
     }
 
     private fun fetchEpisodes(){
-        RickAndMortyRepository.rickAndMortyEpisodesLiveData.observe(viewLifecycleOwner, {
+        RickAndMortyDatasource.rickAndMortyEpisodesLiveData.observe(viewLifecycleOwner, {
             listEpisodes ->
             mAdapter?.setData(listEpisodes)
         })
-        RickAndMortyRepository.fetchRickAndMortyEpisodes()
+        RickAndMortyDatasource.fetchRickAndMortyEpisodes()
     }
 }

@@ -1,31 +1,50 @@
-package alexis.tvrs.rickandmortyuniverse.wiki.data.repositories
+package alexis.tvrs.rickandmortyuniverse.wiki.data.webservices
 
 import alexis.tvrs.rickandmortyuniverse.wiki.data.models.*
-import alexis.tvrs.rickandmortyuniverse.wiki.data.webservices.RickAndMortyApiService
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-object RickAndMortyRepository {
+object RickAndMortyDatasource {
     var rickAndMortyCharactersLiveData = MutableLiveData<List<RickAndMortyCharacter>>()
     var rickAndMortyEpisodesLiveData = MutableLiveData<List<RickAndMortyEpisode>>()
     var rickAndMortyLocationsLiveData = MutableLiveData<List<RickAndMortyLocation>>()
     private val rickAndMortyApi = RickAndMortyApiService.rickAndMortyApi
 
-    fun fetchRickAndMortyCharacters(){
-            val rickAndMortyCharactersCall = rickAndMortyApi.getCharacters()
-            rickAndMortyCharactersCall.enqueue(object : Callback<RickAndMortyCharactersResponse> {
-                override fun onResponse(call: Call<RickAndMortyCharactersResponse>, response: Response<RickAndMortyCharactersResponse>) {
-                    val statusCode: Int = response.code()
-                    Log.d("CallCharacterStatus", statusCode.toString())
-                    rickAndMortyCharactersLiveData.postValue(response.body()?.results)
-                }
-                override fun onFailure(call: Call<RickAndMortyCharactersResponse>, t: Throwable) {
-                    Log.d("getCharacters", t.message.toString())
-                }
-            })
+    fun fetchRickAndMortyCharacters(): MutableLiveData<List<RickAndMortyCharacter>>{
+        val rickAndMortyCharactersCall = rickAndMortyApi.getCharacters()
+        rickAndMortyCharactersCall.enqueue(object : Callback<RickAndMortyCharactersResponse> {
+            override fun onResponse(call: Call<RickAndMortyCharactersResponse>, response: Response<RickAndMortyCharactersResponse>) {
+                val statusCode: Int = response.code()
+                Log.d("CallCharacterStatus", statusCode.toString())
+                rickAndMortyCharactersLiveData.postValue(response.body()?.results)
+            }
+            override fun onFailure(call: Call<RickAndMortyCharactersResponse>, t: Throwable) {
+                Log.d("getCharacters", t.message.toString())
+            }
+        })
+        return rickAndMortyCharactersLiveData
+    }
+
+    fun fetchRickAndMortyCharacters2(): LiveData<List<RickAndMortyCharacter>> {
+
+        val charactersLiveData = MutableLiveData<List<RickAndMortyCharacter>>()
+
+        val rickAndMortyCharactersCall = rickAndMortyApi.getCharacters()
+        rickAndMortyCharactersCall.enqueue(object : Callback<RickAndMortyCharactersResponse> {
+            override fun onResponse(call: Call<RickAndMortyCharactersResponse>, response: Response<RickAndMortyCharactersResponse>) {
+                val statusCode: Int = response.code()
+                Log.d("CallCharacterStatus", statusCode.toString())
+                charactersLiveData.postValue(response.body()?.results)
+            }
+            override fun onFailure(call: Call<RickAndMortyCharactersResponse>, t: Throwable) {
+                Log.d("getCharacters", t.message.toString())
+            }
+        })
+        return charactersLiveData
     }
 
     fun fetchRickAndMortyEpisodes(): MutableLiveData<List<RickAndMortyEpisode>> {

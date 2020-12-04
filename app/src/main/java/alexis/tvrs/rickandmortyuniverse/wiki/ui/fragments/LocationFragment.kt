@@ -1,7 +1,7 @@
 package alexis.tvrs.rickandmortyuniverse.wiki.ui.fragments
 
 import alexis.tvrs.rickandmortyuniverse.R
-import alexis.tvrs.rickandmortyuniverse.wiki.data.repositories.RickAndMortyRepository
+import alexis.tvrs.rickandmortyuniverse.wiki.data.webservices.RickAndMortyDatasource
 import alexis.tvrs.rickandmortyuniverse.wiki.ui.adapters.LocationAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -25,10 +25,10 @@ class LocationFragment : Fragment() {
     }
 
     private fun fetchLocations(){
-        RickAndMortyRepository.rickAndMortyLocationsLiveData.observe(viewLifecycleOwner, {
+        RickAndMortyDatasource.rickAndMortyLocationsLiveData.observe(viewLifecycleOwner, {
             listLocations ->
             mAdapter?.setData(listLocations)
         })
-        RickAndMortyRepository.fetchRickAndMortyLocations()
+        RickAndMortyDatasource.fetchRickAndMortyLocations()
     }
 }

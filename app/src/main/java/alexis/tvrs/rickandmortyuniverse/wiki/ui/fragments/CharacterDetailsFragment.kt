@@ -4,24 +4,25 @@ import alexis.tvrs.rickandmortyuniverse.R
 import alexis.tvrs.rickandmortyuniverse.utils.ScreenUtils
 import alexis.tvrs.rickandmortyuniverse.wiki.data.models.RickAndMortyCharacter
 import alexis.tvrs.rickandmortyuniverse.wiki.ui.activities.MainActivity
-import alexis.tvrs.rickandmortyuniverse.wiki.ui.activities.SplashScreenActivity
+import alexis.tvrs.rickandmortyuniverse.wiki.ui.viewmodels.CharacterViewModel
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_character_details.view.*
-import kotlinx.android.synthetic.main.view_holder_character.view.*
 
 class CharacterDetailsFragment: Fragment() {
+    private var mViewModel: CharacterViewModel? = null
     private lateinit var characterToDisplay: RickAndMortyCharacter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         try {
-            characterToDisplay = arguments?.getParcelable(ARG_CHAR)!!
+            mViewModel = ViewModelProvider(requireActivity()).get(CharacterViewModel::class.java)
         } catch (e: IllegalStateException) {
             (activity as? MainActivity)?.onBackPressed()
         }
@@ -37,6 +38,8 @@ class CharacterDetailsFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        characterToDisplay = mViewModel!!.getCharacterToDisplay()!!
         Glide.with(view)
                 .load(characterToDisplay.image)
                 .override( ScreenUtils.getScreenWidth(view.context))
@@ -56,9 +59,9 @@ class CharacterDetailsFragment: Fragment() {
     companion object{
         const val ARG_CHAR = "arg_character"
 
-        fun newInstance(c: RickAndMortyCharacter): CharacterDetailsFragment{
+        fun newInstance(characterPosition: Int): CharacterDetailsFragment{
             val args = Bundle()
-            args.putParcelable(ARG_CHAR, c)
+            args.putInt(ARG_CHAR, characterPosition)
             val fragment = CharacterDetailsFragment()
             fragment.arguments = args
             return fragment
