@@ -3,7 +3,7 @@ package alexis.tvrs.rickandmortyuniverse.wiki.data.webservices
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RickAndMortyApiService {
+object RickAndMortyApiFactory {
     private const val mBaseUrl = "https://rickandmortyapi.com/api/"
     private val mRetrofit: Retrofit = Retrofit.Builder()
             .baseUrl(mBaseUrl)

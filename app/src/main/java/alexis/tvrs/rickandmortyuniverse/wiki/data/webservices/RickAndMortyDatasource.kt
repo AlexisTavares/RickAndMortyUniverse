@@ -12,7 +12,8 @@ object RickAndMortyDatasource {
     var rickAndMortyCharactersLiveData = MutableLiveData<List<RickAndMortyCharacter>>()
     var rickAndMortyEpisodesLiveData = MutableLiveData<List<RickAndMortyEpisode>>()
     var rickAndMortyLocationsLiveData = MutableLiveData<List<RickAndMortyLocation>>()
-    private val rickAndMortyApi = RickAndMortyApiService.rickAndMortyApi
+    private val rickAndMortyApi = RickAndMortyApiFactory.
+    rickAndMortyApi
 
     fun fetchRickAndMortyCharacters(): MutableLiveData<List<RickAndMortyCharacter>>{
         val rickAndMortyCharactersCall = rickAndMortyApi.getCharacters()
@@ -30,7 +31,6 @@ object RickAndMortyDatasource {
     }
 
     fun fetchRickAndMortyCharacters2(): LiveData<List<RickAndMortyCharacter>> {
-
         val charactersLiveData = MutableLiveData<List<RickAndMortyCharacter>>()
 
         val rickAndMortyCharactersCall = rickAndMortyApi.getCharacters()
@@ -75,5 +75,22 @@ object RickAndMortyDatasource {
             }
         })
         return rickAndMortyLocationsLiveData
+    }
+
+    fun fetchRickAndMortyCharacter(id: Int): RickAndMortyCharacter? {
+        var character:RickAndMortyCharacter? = null
+
+        val rickAndMortyCharactersCall = rickAndMortyApi.getCharacter(id)
+        rickAndMortyCharactersCall.enqueue(object : Callback<RickAndMortyCharacter> {
+            override fun onResponse(call: Call<RickAndMortyCharacter>, response: Response<RickAndMortyCharacter>) {
+                val statusCode: Int = response.code()
+                Log.d("CallCharacterStatus", statusCode.toString())
+                character = response.body()
+            }
+            override fun onFailure(call: Call<RickAndMortyCharacter>, t: Throwable) {
+                Log.d("getCharacter", t.message.toString())
+            }
+        })
+        return character
     }
 }

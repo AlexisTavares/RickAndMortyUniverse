@@ -31,8 +31,8 @@ class CharacterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         mViewModel = ViewModelProvider(requireActivity()).get(CharacterViewModel::class.java)
         mAdapter = CharacterAdapter(
-            { _, characterPosition ->
-                mViewModel!!.selectedCharacter = characterPosition-1
+            { _, characterId ->
+                mViewModel!!.selectedCharacter = characterId
                 parentFragmentManager.beginTransaction()
                         .addToBackStack("CharacterDetailsFragment")
                         .setCustomAnimations(

@@ -56,15 +56,4 @@ class CharacterDetailsFragment: Fragment() {
         val originText = "Origin: " + characterToDisplay.origin.name
         view.characterLayout_origin.text = originText
     }
-    companion object{
-        const val ARG_CHAR = "arg_character"
-
-        fun newInstance(characterPosition: Int): CharacterDetailsFragment{
-            val args = Bundle()
-            args.putInt(ARG_CHAR, characterPosition)
-            val fragment = CharacterDetailsFragment()
-            fragment.arguments = args
-            return fragment
-        }
-    }
 }
