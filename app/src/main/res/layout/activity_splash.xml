@@ -11,12 +11,12 @@
 
     <ImageView
         android:id="@+id/activity_splash_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
         android:contentDescription="@null"
-        android:src="@drawable/portal"
+        android:src="@drawable/background_splash"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,9 +24,12 @@
 
     <Button
         android:id="@+id/guest_login_button"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_margin="15dp"
+        android:padding="15dp"
+        android:layout_centerHorizontal="true"
         android:layout_height="?attr/actionBarSize"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/component_rounded_button"
         android:text="@string/continue_as_guest" />
 </RelativeLayout>

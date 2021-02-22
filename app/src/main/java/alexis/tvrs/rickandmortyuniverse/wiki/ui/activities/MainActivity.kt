@@ -51,14 +51,14 @@ class MainActivity : AppCompatActivity(){
         setupActionBarWithNavController(navController, appBarConfigurationBottomNav)
         bottomNavView.setupWithNavController(navController)
 
-        drawerNavView.setNavigationItemSelectedListener{
-            when(it.itemId){
-                R.id.drawer_logout -> {
-                    AuthManager.signOut()
-                    startActivity(Intent(this, SplashScreenActivity::class.java))
-                }
-            }
-            true
-        }
+//        drawerNavView.setNavigationItemSelectedListener{
+//            when(it.itemId){
+//                R.id.drawer_logout -> {
+//                    AuthManager.signOut()
+//                    startActivity(Intent(this, SplashScreenActivity::class.java))
+//                }
+//            }
+//            true
+//        }
     }
 }

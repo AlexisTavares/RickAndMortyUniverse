@@ -40,15 +40,10 @@ class CollectionFragment : Fragment() {
                     .commit()
         }
         collection_recyclerview.adapter = mAdapter
-        fetchFavoritesCharacters()
-
-        fab_add_collection.setOnClickListener{
-            mViewModel!!.fetchCharacter(5).value?.let { it1 -> SplashScreenActivity.COLLECTION.add(it1) }
-            SharedPreferencesCollection.saveCollected(view.context, SplashScreenActivity.COLLECTION)
-        }
+        fetchAccountOffers()
     }
 
-    private fun fetchFavoritesCharacters(){
+    private fun fetchAccountOffers(){
         mAdapter?.setData(SplashScreenActivity.COLLECTION)
     }
 

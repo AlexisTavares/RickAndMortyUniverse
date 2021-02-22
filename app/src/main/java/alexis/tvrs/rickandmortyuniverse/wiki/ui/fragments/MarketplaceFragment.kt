@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import alexis.tvrs.rickandmortyuniverse.R
 import alexis.tvrs.rickandmortyuniverse.sharedpreferences.SharedPreferencesFavorites
+import alexis.tvrs.rickandmortyuniverse.utils.MockUtils
 import alexis.tvrs.rickandmortyuniverse.wiki.data.models.MarketplaceOffer
 import alexis.tvrs.rickandmortyuniverse.wiki.ui.activities.SplashScreenActivity
 import alexis.tvrs.rickandmortyuniverse.wiki.ui.adapters.CharacterAdapter
@@ -33,18 +34,14 @@ class MarketplaceFragment : Fragment() {
                     mViewModel.buyMarketplaceOffer(marketplaceOffer)
         }
         character_recyclerview.adapter = mAdapter
-        fetchCharacters()
+        fetchOffers()
     }
 
-    private fun fetchCharacters(){
+    private fun fetchOffers(){
 //        mViewModel.getMarketplaceOffers().observe(viewLifecycleOwner, {
 //            mAdapter.setData(it)
 //        })
-        mAdapter.setData(listOf(MarketplaceOffer("sg4sd68gsa","https://rickandmortyapi.com/api/character/avatar/1.jpeg","Rick Sanchez", 25, "Ufs57s6sgsh"),
-                MarketplaceOffer("sg4sdkggsa","https://rickandmortyapi.com/api/character/avatar/38.jpeg","Rick Sanchez", 86, "Ufs57s6svclozqsfgsh"),
-                MarketplaceOffer("sg4sdadgs68gsa","https://rickandmortyapi.com/api/character/avatar/84.jpeg","Rick Sanchez", 69, "Ufs57s4556sgsh"),
-                MarketplaceOffer("sg4sddfbs68gsa","https://rickandmortyapi.com/api/character/avatar/127.jpeg","Rick Sanchez", 42, "Ufs57536487s6sgsh")
-        ))
+        mAdapter.setData(MockUtils.marketplaceOffers)
     }
 
 }
