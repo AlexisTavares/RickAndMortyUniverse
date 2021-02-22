@@ -1,38 +1,70 @@
 package alexis.tvrs.rickandmortyuniverse.wiki.ui.activities
 
 import alexis.tvrs.rickandmortyuniverse.R
+import alexis.tvrs.rickandmortyuniverse.wiki.data.webservices.firebase.AuthManager
+import android.content.Intent
 import android.os.Bundle
-import android.view.MotionEvent
-import android.view.View
+import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val appBarConfiguration = AppBarConfiguration.Builder(
-                R.id.navigation_episodes,
-                R.id.navigation_characters,
-                R.id.navigation_locations,
-                R.id.navigation_characters)
-                .build()
-        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-        NavigationUI.setupWithNavController(nav_view, navController)
-        nav_view.setOnTouchListener(View.OnTouchListener(::onDrag))
+
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        val drawerNavView: NavigationView = findViewById(R.id.drawer_nav_view)
+        val bottomNavView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
+        val navController = findNavController(R.id.nav_host_fragment)
+
+        val appBarConfigurationDrawer = AppBarConfiguration(setOf(
+                R.id.drawer_account, R.id.drawer_offers), drawerLayout)
+
+        setupActionBarWithNavController(navController, appBarConfigurationDrawer)
+        drawerNavView.setupWithNavController(navController)
+
+        val appBarConfigurationBottomNav = AppBarConfiguration.Builder(
+            R.id.navigation_marketplace,
+            R.id.navigation_characters,
+            R.id.navigation_collection,
+            R.id.navigation_favorites,
+            R.id.drawer_account,
+            R.id.drawer_offers)
+            .build()
+
+        setupActionBarWithNavController(navController, appBarConfigurationBottomNav)
+        bottomNavView.setupWithNavController(navController)
+
+        drawerNavView.setNavigationItemSelectedListener{
+            when(it.itemId){
+                R.id.drawer_logout -> {
+                    AuthManager.auth.signOut()
+                    startActivity(Intent(this, SplashScreenActivity::class.java))
+
+//                    Toast.makeText(this,"Logout",Toast.LENGTH_SHORT).show()
+                }
+            }
+            true
+        }
     }
 
-    private fun onDrag(v : View,dEvent : MotionEvent) : Boolean{
-        when(dEvent.action){
-            MotionEvent.ACTION_DOWN -> {
-                Toast.makeText(this@MainActivity,"SwipeDown",Toast.LENGTH_SHORT).show()
-                return true
-            }
-        }
-        return false
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        TODO("Not yet implemented")
     }
 }

@@ -5,13 +5,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".wiki.ui.fragments.CharacterFragment">
+    tools:context=".wiki.ui.fragments.CollectionFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/character_recyclerview"
+        android:id="@+id/collection_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:spanCount="2"
         tools:listitem="@layout/view_holder_character" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_collection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_plus"
+        android:contentDescription="@null" />
 </RelativeLayout>

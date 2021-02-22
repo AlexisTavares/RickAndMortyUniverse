@@ -6,10 +6,10 @@
     app:startDestination="@+id/navigation_characters">
 
     <fragment
-        android:id="@+id/navigation_episodes"
-        android:name="alexis.tvrs.rickandmortyuniverse.wiki.ui.fragments.EpisodeFragment"
-        android:label="@string/title_episodes"
-        tools:layout="@layout/fragment_episodes" />
+        android:id="@+id/navigation_marketplace"
+        android:name="alexis.tvrs.rickandmortyuniverse.wiki.ui.fragments.MarketplaceFragment"
+        android:label="@string/title_marketplace"
+        tools:layout="@layout/fragment_marketplace" />
 
     <fragment
         android:id="@+id/navigation_characters"
@@ -18,13 +18,26 @@
         tools:layout="@layout/fragment_characters" />
 
     <fragment
-        android:id="@+id/navigation_locations"
-        android:name="alexis.tvrs.rickandmortyuniverse.wiki.ui.fragments.LocationFragment"
-        android:label="@string/title_locations"
-        tools:layout="@layout/fragment_locations" />
+        android:id="@+id/navigation_collection"
+        android:name="alexis.tvrs.rickandmortyuniverse.wiki.ui.fragments.CollectionFragment"
+        android:label="@string/title_collection"
+        tools:layout="@layout/fragment_characters" />
+
     <fragment
         android:id="@+id/navigation_favorites"
         android:name="alexis.tvrs.rickandmortyuniverse.wiki.ui.fragments.FavoriteFragment"
         android:label="@string/title_favorites"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_characters" />
+
+    <fragment
+        android:id="@+id/drawer_account"
+        android:name="alexis.tvrs.rickandmortyuniverse.wiki.ui.fragments.AccountFragment"
+        android:label="@string/title_account"
+        tools:layout="@layout/fragment_account" />
+
+    <fragment
+        android:id="@+id/drawer_offers"
+        android:name="alexis.tvrs.rickandmortyuniverse.wiki.ui.fragments.OffersFragment"
+        android:label="@string/title_offers"
+        tools:layout="@layout/fragment_offers" />
 </navigation>

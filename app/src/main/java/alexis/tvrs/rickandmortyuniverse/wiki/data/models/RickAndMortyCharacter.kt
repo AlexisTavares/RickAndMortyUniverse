@@ -8,18 +8,16 @@ import androidx.room.TypeConverters
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-@Entity(tableName = "character")
 data class RickAndMortyCharacter(
-        @PrimaryKey var id: Int,
-        @ColumnInfo(name = "name") var name: String,
-        @ColumnInfo(name = "status") var status: String,
-        @ColumnInfo(name = "species") var species: String,
-        @ColumnInfo(name = "type") var type: String,
-        @ColumnInfo(name = "gender") var gender: String,
-
+        var id: Int,
+        var name: String,
+        var status: String,
+        var species: String,
+        var type: String,
+        var gender: String,
         var origin: RickAndMortyLocation,
         var location: RickAndMortyLocation,
-        @ColumnInfo(name = "image") var image: String,
+        var image: String,
         var episodes: List<RickAndMortyEpisode>,
-        @ColumnInfo(name = "url") var url: String
+        var url: String
 ): Parcelable

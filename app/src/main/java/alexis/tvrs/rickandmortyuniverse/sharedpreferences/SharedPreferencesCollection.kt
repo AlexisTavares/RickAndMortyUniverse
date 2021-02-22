@@ -6,13 +6,13 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import java.util.*
 
-class SharedPreferencesFavorites {
+class SharedPreferencesCollection {
 
     companion object {
-        private const val PREFS_NAME = "FAVORITES_APP"
-        private const val CHARACTERS = "FAVORITES"
+        private const val PREFS_NAME = "COLLECTION_APP"
+        private const val CHARACTERS = "COLLECTION"
 
-        fun saveFavorites(context: Context, rickAndMortyCharacters: List<RickAndMortyCharacter?>?) {
+        fun saveCollected(context: Context, rickAndMortyCharacters: List<RickAndMortyCharacter?>?) {
             val editor: SharedPreferences.Editor
             val settings: SharedPreferences = context.getSharedPreferences(PREFS_NAME,
                     Context.MODE_PRIVATE)
@@ -23,7 +23,7 @@ class SharedPreferencesFavorites {
             editor.apply()
         }
 
-        fun getFavorites(context: Context): ArrayList<RickAndMortyCharacter>? {
+        fun getCollected(context: Context): ArrayList<RickAndMortyCharacter>? {
             var rickAndMortyCharacters: List<RickAndMortyCharacter>?
             val settings: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
             if (settings.contains(CHARACTERS)) {

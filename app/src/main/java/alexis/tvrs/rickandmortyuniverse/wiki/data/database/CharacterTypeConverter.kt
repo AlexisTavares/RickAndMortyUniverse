@@ -1,7 +1,7 @@
 package alexis.tvrs.rickandmortyuniverse.wiki.data.database
 
 import alexis.tvrs.rickandmortyuniverse.wiki.data.models.RickAndMortyCharacter
-import alexis.tvrs.rickandmortyuniverse.wiki.data.webservices.RickAndMortyDatasource
+import alexis.tvrs.rickandmortyuniverse.wiki.data.webservices.rickandmortyapi.RickAndMortyApiDatasource
 import androidx.room.TypeConverter
 
 class CharacterTypeConverter {
@@ -15,7 +15,7 @@ class CharacterTypeConverter {
         @TypeConverter
         @JvmStatic
         fun toRickAndMortyCharacter(value: Int): RickAndMortyCharacter? {
-            return RickAndMortyDatasource.fetchRickAndMortyCharacter(value)
+            return RickAndMortyApiDatasource.fetchRickAndMortyCharacter(value)
         }
     }
 }

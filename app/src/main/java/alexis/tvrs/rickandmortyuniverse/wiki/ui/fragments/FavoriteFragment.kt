@@ -2,7 +2,6 @@ package alexis.tvrs.rickandmortyuniverse.wiki.ui.fragments
 
 import alexis.tvrs.rickandmortyuniverse.R
 import alexis.tvrs.rickandmortyuniverse.sharedpreferences.SharedPreferencesFavorites
-import alexis.tvrs.rickandmortyuniverse.wiki.data.webservices.RickAndMortyDatasource
 import alexis.tvrs.rickandmortyuniverse.wiki.ui.activities.SplashScreenActivity
 import alexis.tvrs.rickandmortyuniverse.wiki.ui.adapters.CharacterAdapter
 import alexis.tvrs.rickandmortyuniverse.wiki.ui.viewmodels.CharacterViewModel
@@ -31,8 +30,8 @@ class FavoriteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         mViewModel = ViewModelProvider(this).get(CharacterViewModel::class.java)
         mAdapter = CharacterAdapter(
-                { _, characterId ->
-                    mViewModel!!.selectedCharacter = characterId
+                { _, character ->
+                    mViewModel!!.selectedCharacter = character
                     parentFragmentManager.beginTransaction()
                             .addToBackStack("CharacterDetailsFragment")
                             .setCustomAnimations(

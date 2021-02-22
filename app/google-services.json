@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "733813256387",
+    "project_id": "rickandmortyuniverse-14db4",
+    "storage_bucket": "rickandmortyuniverse-14db4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:733813256387:android:930542f3bcc11c79d83276",
+        "android_client_info": {
+          "package_name": "alexis.tvrs.rickandmortyuniverse.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "733813256387-9f0a5e7bo0ukseopa8rsi9aq0bfmns8b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX2OT9hj6OnxhbQgb-9WX_uTOeI_8iuGw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "733813256387-9f0a5e7bo0ukseopa8rsi9aq0bfmns8b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

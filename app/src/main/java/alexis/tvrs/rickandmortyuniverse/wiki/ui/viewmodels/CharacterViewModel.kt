@@ -1,25 +1,29 @@
 package alexis.tvrs.rickandmortyuniverse.wiki.ui.viewmodels
 
 import alexis.tvrs.rickandmortyuniverse.wiki.data.models.RickAndMortyCharacter
-import alexis.tvrs.rickandmortyuniverse.wiki.data.webservices.RickAndMortyDatasource
-import androidx.lifecycle.LiveData
+import alexis.tvrs.rickandmortyuniverse.wiki.data.webservices.rickandmortyapi.RickAndMortyApiDatasource
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class CharacterViewModel: ViewModel() {
-    var selectedCharacter = 0
-    private var rickAndMortyCharactersLiveData = RickAndMortyDatasource.rickAndMortyCharactersLiveData
+    var rickAndMortyCharacters = MutableLiveData<List<RickAndMortyCharacter>>()
+    var selectedCharacter : RickAndMortyCharacter? = null
 
-    fun fetchCharacters(): LiveData<List<RickAndMortyCharacter>> {
-        return RickAndMortyDatasource.fetchRickAndMortyCharacters()
+    fun fetchCharacters() {
+        viewModelScope.launch(Dispatchers.IO) {
+            rickAndMortyCharacters.postValue(RickAndMortyApiDatasource.fetchRickAndMortyCharacters())
+        }
     }
 
-    fun getCharacterToDisplay(): RickAndMortyCharacter? {
-        for (character in rickAndMortyCharactersLiveData.value!!) {
-            if (character.id == selectedCharacter) {
-                return character
-            }
+    fun fetchCharacter(id: Int) : MutableLiveData<RickAndMortyCharacter> {
+        val character = MutableLiveData<RickAndMortyCharacter>()
+        viewModelScope.launch(Dispatchers.IO) {
+            character.postValue(RickAndMortyApiDatasource.fetchRickAndMortyCharacter(id))
         }
-        return this.rickAndMortyCharactersLiveData.value?.get(0)
+        return character
     }
 }

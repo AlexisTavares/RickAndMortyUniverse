@@ -4,8 +4,27 @@
 
     <style name="AppSeriesTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorSecondary</item>
-        <item name="colorAccent">@color/colorTertiary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">#00000000</item>
     </style>
 
+    <style name="NavMenuStyle" parent="Widget.Design.BottomNavigationView">
+        <item name="color">@color/colorPrimaryDark</item>
+        <item name="background">@color/colorPrimaryDark</item>
+        <item name="itemIconTint">@color/colorAccent</item>
+        <item name="itemTextColor">@color/colorAccent</item>
+    </style>
+
+    <style name="ToolbarStyle" parent="Widget.Design.BottomNavigationView">
+        <item name="background">@color/colorPrimary</item>
+    </style>
+
+    <style name="TextSimple" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="CircularImageView">
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

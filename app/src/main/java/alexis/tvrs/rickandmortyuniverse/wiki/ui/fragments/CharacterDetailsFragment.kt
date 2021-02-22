@@ -39,7 +39,8 @@ class CharacterDetailsFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        characterToDisplay = mViewModel!!.getCharacterToDisplay()!!
+        characterToDisplay = mViewModel!!.selectedCharacter!!
+
         Glide.with(view)
                 .load(characterToDisplay.image)
                 .override( ScreenUtils.getScreenWidth(view.context))

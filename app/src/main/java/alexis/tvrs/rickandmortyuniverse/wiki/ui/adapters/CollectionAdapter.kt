@@ -10,10 +10,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.view_holder_character.view.*
-import java.util.ArrayList
 
-class CharacterAdapter(private val onClick: (View, RickAndMortyCharacter) -> Unit, private val onLongClick: (View, RickAndMortyCharacter) -> Boolean): RecyclerView.Adapter<CharacterAdapter.CharacterItemViewHolder>(){
-    private var mCharacterList = ArrayList<RickAndMortyCharacter>()
+class CollectionAdapter(private val onClick: (View, RickAndMortyCharacter) -> Unit): RecyclerView.Adapter<CollectionAdapter.CharacterItemViewHolder>(){
+    private var mCharacterList = emptyList<RickAndMortyCharacter>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterItemViewHolder {
         return CharacterItemViewHolder.newInstance(parent)
@@ -21,8 +20,7 @@ class CharacterAdapter(private val onClick: (View, RickAndMortyCharacter) -> Uni
 
     override fun onBindViewHolder(holder: CharacterItemViewHolder, position: Int) {
         holder.bind(mCharacterList[position]
-                ,onClick
-                ,onLongClick)
+                ,onClick)
     }
 
     override fun getItemCount(): Int {
@@ -31,7 +29,7 @@ class CharacterAdapter(private val onClick: (View, RickAndMortyCharacter) -> Uni
 
     fun setData(listCharacters: List<RickAndMortyCharacter>?) {
         if (listCharacters != null) {
-            this.mCharacterList.addAll(listCharacters)
+            this.mCharacterList = listCharacters
             notifyDataSetChanged()
         }
     }
@@ -40,8 +38,7 @@ class CharacterAdapter(private val onClick: (View, RickAndMortyCharacter) -> Uni
         itemView: View
     ): RecyclerView.ViewHolder(itemView){
         fun bind(character: RickAndMortyCharacter
-                 ,onClick: (View, RickAndMortyCharacter) -> Unit
-                 ,onLongClick: (View, RickAndMortyCharacter) -> Boolean) {
+                 ,onClick: (View, RickAndMortyCharacter) -> Unit) {
             Glide.with(itemView)
                     .load(character.image)
                     .override( ScreenUtils.getScreenWidth(itemView.context)/2)
@@ -50,7 +47,6 @@ class CharacterAdapter(private val onClick: (View, RickAndMortyCharacter) -> Uni
             itemView.character_grid_name.text = character.name
 
             itemView.setOnClickListener{onClick(it, character)}
-            itemView.setOnLongClickListener{onLongClick(it, character)}
         }
 
         companion object{
