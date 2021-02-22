@@ -12,10 +12,11 @@ import kotlinx.coroutines.launch
 class CharacterViewModel: ViewModel() {
     var rickAndMortyCharacters = MutableLiveData<List<RickAndMortyCharacter>>()
     var selectedCharacter : RickAndMortyCharacter? = null
+    var selectedPage = 1
 
     fun fetchCharacters() {
         viewModelScope.launch(Dispatchers.IO) {
-            rickAndMortyCharacters.postValue(RickAndMortyApiDatasource.fetchRickAndMortyCharacters())
+            rickAndMortyCharacters.postValue(RickAndMortyApiDatasource.fetchRickAndMortyCharacters(selectedPage))
         }
     }
 

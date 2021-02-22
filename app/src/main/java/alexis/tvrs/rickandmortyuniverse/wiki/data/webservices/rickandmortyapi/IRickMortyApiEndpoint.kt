@@ -4,11 +4,14 @@ import alexis.tvrs.rickandmortyuniverse.wiki.data.models.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface IRickMortyApiEndpoint {
     @GET("character/{character_id}")
     fun getCharacter(@Path("character_id") character_id: Int): RickAndMortyCharacter
 
     @GET("character")
-    suspend fun getCharacters(): RickAndMortyCharactersResponse
+    suspend fun getCharacters(
+            @Query("page") page : Int)
+    : RickAndMortyCharactersResponse
 }

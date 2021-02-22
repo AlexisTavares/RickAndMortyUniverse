@@ -15,6 +15,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import kotlinx.android.synthetic.main.activity_splash.*
 
 
 class SplashScreenActivity : Activity() {
@@ -28,8 +29,11 @@ class SplashScreenActivity : Activity() {
         if (favorites != null) FAVORITES.addAll(favorites)
 
         val collection = SharedPreferencesCollection.getCollected(this)
-        CARD_SIZE = ScreenUtils.getScreenWidth(this)/2
         if (collection != null) COLLECTION.addAll(collection)
+
+        guest_login_button.setOnClickListener{
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
 
     override fun onStart() {
@@ -42,6 +46,7 @@ class SplashScreenActivity : Activity() {
                 .build()
 
         AuthManager.googleSignInClient = GoogleSignIn.getClient(this, gso)
+        AuthManager.userGoogleAccount = GoogleSignIn.getLastSignedInAccount(this)
         loginUser(currentUser)
     }
 
@@ -81,7 +86,6 @@ class SplashScreenActivity : Activity() {
 
     private fun loginUser(user: FirebaseUser?) {
         if (user != null) {
-            AuthManager.userGoogleAccount = GoogleSignIn.getLastSignedInAccount(this)
             startActivity(Intent(this, MainActivity::class.java))
         } else {
             signIn()

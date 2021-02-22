@@ -20,7 +20,7 @@ import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -54,17 +54,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerNavView.setNavigationItemSelectedListener{
             when(it.itemId){
                 R.id.drawer_logout -> {
-                    AuthManager.auth.signOut()
+                    AuthManager.signOut()
                     startActivity(Intent(this, SplashScreenActivity::class.java))
-
-//                    Toast.makeText(this,"Logout",Toast.LENGTH_SHORT).show()
                 }
             }
             true
         }
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        TODO("Not yet implemented")
     }
 }

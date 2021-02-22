@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_characters.*
 class CharacterFragment : Fragment() {
     private lateinit var  mAdapter: CharacterAdapter
     private lateinit var mViewModel: CharacterViewModel
-    private var requestRefresh = false
+    private var isCharacterLoadNeeded = false
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -69,7 +69,7 @@ class CharacterFragment : Fragment() {
                     for(item in lastItem) {
                         if (currentTotalCount <= item + visibleThreshold){
                             loadMoreCharacters()
-                            Toast.makeText(activity,"Loaded",Toast.LENGTH_SHORT).show()
+                            isCharacterLoadNeeded = true
                             break
                         }
                     }
@@ -78,8 +78,17 @@ class CharacterFragment : Fragment() {
         fetchCharacters()
     }
 
+    override fun onResume() {
+        super.onResume()
+        mViewModel.selectedPage = 1
+
+    }
+
     private fun loadMoreCharacters(){
-        mViewModel.fetchCharacters()
+        if(isCharacterLoadNeeded) {
+            mViewModel.selectedPage++
+            mViewModel.fetchCharacters()
+        }
     }
 
     private fun fetchCharacters(){
